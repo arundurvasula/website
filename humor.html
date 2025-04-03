@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal site of Arun Durvasula.">
+  <meta name="author" content="Arun Durvasula">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="Genetics, Statistics, Genomics, Populations, Cartoons, Humor">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Humor</title>
+</head>
+<body>
+  <div id="navbar"></div>
+    <script>
+    // Fetch and insert the navbar from an external file
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <ul>
+    <li><a href='img/cartoons/WeeklyHumorist-00271_Hobby.png'>Cartoon</a>, <i><a href="https://weeklyhumorist.com/cartoon-fix-it-funtime//">Weekly Humorist</a></i> (2025)</li>
+    <li>LA Fires '25: What Really Happened, <i><a href='https://theamericanbystanderstore.com/products/the-american-bystander-issue-29'>The American Bystander, Issue #29</a></i> (2025)</li>
+    <li><a href='img/cartoons/TimesLuxury-00178_Cake.png'>Cartoon</a>, <i><a href='https://www.thetimes.com/life-style/luxury/article/the-times-luxury-cartoon-november-4-2024-gp5fgfhvf'>The Times of London</a></i> (2024)</li>
+    <li><a href='img/cartoons/TimesLuxury-00075_Cone.png'>Cartoon</a>, <i><a href='https://www.thetimes.com/life-style/luxury/article/the-times-luxury-cartoon-july-29-2024-vjqhrc5zj'>The Times of London</a></i> (2024)</li>
+    <li><a href='img/cartoons/WeeklyHumorist-00131_Credit_Score.png'>Cartoon</a>, <i><a href="https://weeklyhumorist.com/cartoon-credit-conundrum/">Weekly Humorist</a></i> (2024)</li>
+    <li><a href='img/cartoons/AmericanBystander-00143_Asteroid.png'>Cartoon</a>, <i><a href='https://theamericanbystanderstore.com/products/issue-27'>The American Bystander, Issue #27</a></i> (2023)</li>
+    <li><a href='img/cartoons/AmericanBystander-00171_Goose_Lesson.png'>Cartoon</a>, <i><a href="https://www.americanbystander.org/store3/issue-26">The American Bystander, Issue #26</a></i> (2023)</li>
+    <li><a href='img/cartoons/TwoFiftyOne-00170_Grassy_Wine.png'>Cartoon</a>, <i>TwoFiftyOne</i> (2023)</li>
+    <li><a href='img/cartoons/TwoFiftyOne-00154_Podcast.png'>Cartoon</a>, <i>TwoFiftyOne</i> (2023)</li>
+    <li><a href='img/cartoons/TwoFiftyOne-00144_Plant_Death.png'>Cartoon</a>, <i>TwoFiftyOne</i> (2023)</li>
+    <li><a href='img/cartoons/TwoFiftyOne-00097_Jewels.png'>Cartoon</a>, <i>TwoFiftyOne</i> (2023)</li>
+    <li><a href='img/cartoons/WeeklyHumorist-00162_Hospital_Vultures.png'>Cartoon</a>, <i><a href="https://weeklyhumorist.com/cartoon-test-results/">Weekly Humorist</a></i> (2023)</li>
+    <li><a href='img/cartoons/WeeklyHumorist-00116_Hissing.png'>Cartoon</a>, <i><a href="https://weeklyhumorist.com/cartoon-hissteria/">Weekly Humorist</a></i> (2023)</li>
+    <li><a href='img/cartoons/TwoFiftyOne-00086_Assistant.png'>Cartoon</a>, <i>TwoFiftyOne</i> (2022)</li>
+  </ul>
+</body>
+</html>

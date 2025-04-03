@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal site of Arun Durvasula.">
+  <meta name="author" content="Arun Durvasula">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="Genetics, Statistics, Genomics, Populations, Cartoons, Humor">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Writing</title>
+</head>
+<body>
+  <div id="navbar"></div>
+    <script>
+    // Fetch and insert the navbar from an external file
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <ul>
+    <li>Email (science): firstname dot last name at med dot usc dot edu</li>
+    <li>Lab website: <a href="https://www.durvasula-lab.usc.edu">durvasula-lab.usc.edu</a></li>
+    <li><a href="https://bsky.app/profile/arundurvasula.bsky.social">BlueSky</a></li>
+    <hr>
+    <li>Email (not science) firstname lastname cartoons at gmail dot com</li>
+    <li><a href="https://www.instagram.com/a.d.cartoons">Instagram</a></li>
+</ul>
+</body>
+</html>

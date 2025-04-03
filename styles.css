@@ -1,0 +1,62 @@
+/* Default styling for desktop */
+body {
+  text-align: left;
+  padding: 40px; /* Larger padding for desktop */
+  max-width: 600px;
+  font-family: 'Newsreader', serif;
+  font-size: 18px;
+  line-height: 1.2; 
+}
+
+/* Adjust padding for mobile devices */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 20px; /* Smaller padding for mobile */
+  }
+}
+
+h1 {
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1::after {
+      content: "";
+      display: block;
+      width: 100%;         /* Rectangle will span the full width of the h1 */
+      height: 8px;        /* Height of the rectangle */
+      background-color: #cb7c5d; /* Rectangle color */
+      margin-top: 5px;     /* Space between the name and rectangle */
+    }
+
+ul {
+      list-style-position: outside;
+}
+
+li {
+  padding-left: 1.5em; /* space for the marker */
+  text-indent: -1.5em; /* pulls the first line back to the left */
+  margin-bottom: 0.5em; /* optional spacing between items */
+}
+
+a:link,
+a:visited {
+  color: #6AA69C; /* Replace with your desired color */
+  text-decoration: none; /* Optional: remove underline */
+}
+
+.navbar {
+  overflow: hidden;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: #6AA69C;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  background-color: #ddd;
+  color: #6AA69C;
+}
