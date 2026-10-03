@@ -64,5 +64,13 @@
     <li><a href='img/cartoons/WeeklyHumorist-00116_Hissing.png'>Cartoon: Hissing</a>, <i><a href="https://weeklyhumorist.com/cartoon-hissteria/">Weekly Humorist</a></i> (2023)</li>
     <li><a href='img/cartoons/TwoFiftyOne-00086_Assistant.png'>Cartoon: Assistant</a>, <i>TwoFiftyOne</i> (2022)</li>
   </ol>
+  <script>
+    // Open cartoons in the viewer, and give each item an id so the viewer can link back to it
+    document.querySelectorAll('a[href^="img/cartoons/"]').forEach(a => {
+      const name = a.getAttribute('href').split('/').pop().replace(/\.png$/i, '');
+      a.href = 'cartoon.html?c=' + encodeURIComponent(name);
+      a.closest('li').id = name;
+    });
+  </script>
 </body>
 </html>

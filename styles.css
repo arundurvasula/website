@@ -60,3 +60,25 @@ a:visited {
   background-color: #ddd;
   color: #6AA69C;
 }
+
+/* Cartoon viewer */
+.viewer-nav {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 1em 0;
+}
+.viewer-step a {
+  margin: 0 0.5em;
+}
+.viewer-img {
+  display: block;
+  max-width: 100%;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+.viewer-caption {
+  text-align: center;
+}

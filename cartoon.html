@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal site of Arun Durvasula.">
+  <meta name="author" content="Arun Durvasula">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="Genetics, Statistics, Genomics, Populations, Cartoons, Humor">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Cartoon</title>
+</head>
+<body>
+  <div id="navbar"></div>
+    <script>
+    // Fetch and insert the navbar from an external file
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+  <div class="viewer-nav">
+    <a id="back" href="humor.html">&larr; All cartoons</a>
+    <span class="viewer-step">
+      <a id="prev" href="#">&lsaquo; Prev</a>
+      <span id="counter"></span>
+      <a id="next" href="#">Next &rsaquo;</a>
+    </span>
+  </div>
+  <img id="cartoon" class="viewer-img" alt="">
+  <p id="caption" class="viewer-caption"></p>
+  <script>
+    // Build the cartoon list from humor.html so it stays the single source of truth
+    let cartoons = [];
+    let current = 0;
+
+    const nameOf = src => src.split('/').pop().replace(/\.png$/i, '');
+
+    function show(i) {
+      current = (i + cartoons.length) % cartoons.length;
+      const c = cartoons[current];
+      const img = document.getElementById('cartoon');
+      img.src = c.src;
+      img.alt = c.title;
+      document.title = c.title;
+      document.getElementById('caption').innerHTML = c.title + ', ' + c.rest;
+      document.getElementById('counter').textContent = (current + 1) + ' / ' + cartoons.length;
+      document.getElementById('back').href = 'humor.html#' + c.name;
+      history.replaceState(null, '', '?c=' + encodeURIComponent(c.name));
+      // Preload the next cartoon
+      new Image().src = cartoons[(current + 1) % cartoons.length].src;
+    }
+
+    fetch('humor.html')
+      .then(response => response.text())
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.querySelectorAll('ol li').forEach(li => {
+          const a = li.querySelector('a[href^="img/cartoons/"]');
+          if (!a) return;
+          a.remove();
+          cartoons.push({
+            src: a.getAttribute('href'),
+            name: nameOf(a.getAttribute('href')),
+            title: a.textContent.replace(/^Cartoon:\s*/, ''),
+            rest: li.innerHTML.replace(/^\s*,\s*/, '')
+          });
+        });
+        const want = new URLSearchParams(location.search).get('c');
+        const found = cartoons.findIndex(c => c.name === want);
+        show(found < 0 ? 0 : found);
+      })
+      .catch(error => console.error('Error loading cartoons:', error));
+
+    document.getElementById('prev').addEventListener('click', e => { e.preventDefault(); show(current - 1); });
+    document.getElementById('next').addEventListener('click', e => { e.preventDefault(); show(current + 1); });
+    document.addEventListener('keydown', e => {
+      if (!cartoons.length) return;
+      if (e.key === 'ArrowLeft') show(current - 1);
+      else if (e.key === 'ArrowRight') show(current + 1);
+      else if (e.key === 'Escape') location.href = document.getElementById('back').href;
+    });
+
+    // Swipe left/right on touch screens
+    let touchX = null;
+    document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; });
+    document.addEventListener('touchend', e => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      touchX = null;
+    });
+  </script>
+</body>
+</html>
